@@ -2,4 +2,3 @@
 
 Automation Testing project
 
-Automation Testing project
