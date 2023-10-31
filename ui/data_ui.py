@@ -6,11 +6,16 @@ from faker import Faker
 load_dotenv()
 fake = Faker()
 
+class ChromeDriverPaths:
+    CHROME_DRIVER_PATH_J = '/Users/uliabubnova/PycharmProjects/TeamBook_ui_and_api/TeamBook_ui_and_api_orig_jul/chromedriver'
+    CHROME_DRIVER_PATH_V = '/usr/local/bin/chromedriver'
+
+
 class LoginPageData:
-    LOGIN_PAGE_URL = os.getenv('LOGIN_PAGE_URL')
-    LOGIN_EMAIL = os.getenv('LOGIN_EMAIL')
-    LOGIN_PASSWORD = os.getenv('LOGIN_PASSWORD')
-    INVALID_PASSWORD = os.getenv('INVALID_PASSWORD')
+    LOGIN_PAGE_URL = 'https://web.teambooktest.com/login'
+    LOGIN_CORRECT_EMAIL = os.environ['LOGIN_EMAIL']
+    LOGIN_CORRECT_PASSWORD = os.environ['LOGIN_PASSWORD']
+    #INVALID_PASSWORD = use faker here
 
 
 
@@ -21,3 +26,9 @@ class RegisterPageData:
     REGISTER_BUSINESS_EMAIL_VALID = f'{uuid}@mail.ru'
     REGISTER_ORGANIZATION_NAME_VALID = fake.text(max_nb_chars=10)
     REGISTER_PASSWORD_VALID = 'Password1!'
+
+
+class UsersPageData:
+    USERS_PAGE_URL = 'https://web.teambooktest.com/users'
+    #FIRST_NAME =use faker here
+    #LAST_NAME = use faker here
