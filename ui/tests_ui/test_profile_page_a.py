@@ -9,3 +9,5 @@ def test_general_info(browser, login):
     page = GeneralInfo(browser, link)
     page.open()
     page.click_edit()
+
+
