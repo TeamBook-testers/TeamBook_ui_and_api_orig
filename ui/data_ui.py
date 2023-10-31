@@ -18,6 +18,7 @@ class RegisterPageData:
     REGISTER_PAGE_URL = 'https://web.teambooktest.com/register'
     REGISTER_FIRST_NAME_VALID = fake.first_name()
     REGISTER_LAST_NAME_VALID = fake.last_name()
-    REGISTER_BUSINESS_EMAIL_VALID = f'{uuid}@mail.ru'
+    REGISTER_BUSINESS_EMAIL_VALID = fake.email()
     REGISTER_ORGANIZATION_NAME_VALID = fake.text(max_nb_chars=10)
     REGISTER_PASSWORD_VALID = 'Password1!'
+    PLANNER_PAGE_URL = 'https://web.teambooktest.com/planners'
