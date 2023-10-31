@@ -25,12 +25,16 @@ load_dotenv()
 def browser():
 
     #use here your own path to ChromeDriver! (located in ui.data_ui > ChromeDriverPaths)
-    chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_J
+    # chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_J
+    chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_V
     service = Service(chrome_driver_path)
     browser = webdriver.Chrome(service=service)
     browser.maximize_window()
     yield browser
     browser.quit()
+
+
+
 
     # login_email.send_keys(os.environ['LOGIN'])
 @pytest.fixture()
