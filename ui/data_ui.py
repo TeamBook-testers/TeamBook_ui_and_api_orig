@@ -26,7 +26,7 @@ class RegisterPageData:
     REGISTER_BUSINESS_EMAIL_VALID = fake.email()
     REGISTER_ORGANIZATION_NAME_VALID = fake.text(max_nb_chars=10)
     REGISTER_PASSWORD_VALID = 'Password1!'
-    PLANNER_PAGE_URL = 'https://web.teambooktest.com/planners'
+
 
 
 
@@ -34,3 +34,9 @@ class UsersPageData:
     USERS_PAGE_URL = 'https://web.teambooktest.com/users'
     #FIRST_NAME =use faker here
     #LAST_NAME = use faker here
+
+
+
+
+class PlannerPageData:
+    PLANNER_PAGE_URL = 'https://web.teambooktest.com/planners'
