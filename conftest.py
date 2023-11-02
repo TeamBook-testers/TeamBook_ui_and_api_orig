@@ -16,19 +16,29 @@ from ui.data_ui import ChromeDriverPaths, LoginPageData
 from ui.pages.login_page import LoginPage
 from selenium.webdriver.support import expected_conditions as EC
 
+import chromedriver_autoinstaller
+
 load_dotenv()
 
 
 
+
 '''Для использования фикстуры необходимо персонализировать Service()'''
+# @pytest.fixture(autouse=True)
+# def browser():
+#     #use here your own path to ChromeDriver! (located in ui.data_ui > ChromeDriverPaths)
+#     # chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_J
+#     chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_V
+#     service = Service(chrome_driver_path)
+#     browser = webdriver.Chrome(service=service)
+#     browser.maximize_window()
+#     yield browser
+#     browser.quit()
+
 @pytest.fixture(autouse=True)
 def browser():
-
-    #use here your own path to ChromeDriver! (located in ui.data_ui > ChromeDriverPaths)
-    # chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_J
-    chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_V
-    service = Service(chrome_driver_path)
-    browser = webdriver.Chrome(service=service)
+    chromedriver_autoinstaller.install()
+    browser = webdriver.Chrome()
     browser.maximize_window()
     yield browser
     browser.quit()
@@ -36,22 +46,23 @@ def browser():
 
 
 
-    # login_email.send_keys(os.environ['LOGIN'])
-@pytest.fixture()
-def login(browser):
-    link = LoginPageData.LOGIN_PAGE_URL
-    page = LoginPage(browser, link)
-    page.open()
-    page.enter_email()
-    page.enter_password()
-    page.button_submit()
-    with allure.step('after successful login, the planning page is open.'):
-        allure.attach(browser.get_screenshot_as_png(), name='main_page', attachment_type=AttachmentType.PNG)
-    try:
-        user_menu = WebDriverWait(browser, 10).until(
-            EC.visibility_of_element_located((By.ID, "openUserMenu"))
-        )
-    except TimeoutException:
-        user_menu = None
 
-    assert user_menu, 'user_menu is not found within 10 seconds'
+#     # login_email.send_keys(os.environ['LOGIN'])
+# @pytest.fixture()
+# def login(browser):
+#     link = LoginPageData.LOGIN_PAGE_URL
+#     page = LoginPage(browser, link)
+#     page.open()
+#     page.enter_email()
+#     page.enter_password()
+#     page.button_submit()
+#     with allure.step('after successful login, the planning page is open.'):
+#         allure.attach(browser.get_screenshot_as_png(), name='main_page', attachment_type=AttachmentType.PNG)
+#     try:
+#         user_menu = WebDriverWait(browser, 10).until(
+#             EC.visibility_of_element_located((By.ID, "openUserMenu"))
+#         )
+#     except TimeoutException:
+#         user_menu = None
+#
+#     assert user_menu, 'user_menu is not found within 10 seconds'
