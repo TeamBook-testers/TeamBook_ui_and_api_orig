@@ -3,6 +3,8 @@ import os
 import uuid
 from faker import Faker
 
+
+
 load_dotenv()
 fake = Faker()
 
@@ -15,7 +17,9 @@ class LoginPageData:
     LOGIN_PAGE_URL = 'https://web.teambooktest.com/login'
     LOGIN_CORRECT_EMAIL = os.environ['LOGIN_EMAIL']
     LOGIN_CORRECT_PASSWORD = os.environ['LOGIN_PASSWORD']
-    #INVALID_PASSWORD = use faker here
+    LOGIN_INCORRECT_PASSWORD = fake.password(length=8)
+    LOGIN_INCORRECT_EMAIL = fake.email()
+    LOGIN_INVALID_EMAIL = fake.word()
 
 
 
@@ -32,8 +36,8 @@ class RegisterPageData:
 
 class UsersPageData:
     USERS_PAGE_URL = 'https://web.teambooktest.com/users'
-    #FIRST_NAME =use faker here
-    #LAST_NAME = use faker here
+    FIRST_NAME = fake.first_name()
+    LAST_NAME = fake.last_name()
 
 
 

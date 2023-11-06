@@ -7,4 +7,5 @@ class LoginPageLocators:
     LOGIN_PASSWORD = (By.ID, ":r1:")
     LOGIN_BUTTON = (By.ID, "login_btn")
     USER_MENU = (By.ID, "openUserMenu")
+    ERROR_MESSAGE = (By.CSS_SELECTOR, ".form-error__error-message.undefined")
 
