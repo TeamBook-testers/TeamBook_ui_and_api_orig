@@ -23,16 +23,17 @@ load_dotenv()
 
 
 '''Для использования фикстуры необходимо персонализировать Service()'''
-# @pytest.fixture(autouse=True)
-# def browser():
-#     #use here your own path to ChromeDriver! (located in ui.data_ui > ChromeDriverPaths)
-#     # chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_J
-#     chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_V
-#     service = Service(chrome_driver_path)
-#     browser = webdriver.Chrome(service=service)
-#     browser.maximize_window()
-#     yield browser
-#     browser.quit()
+@pytest.fixture()
+def browser():
+    #use here your own path to ChromeDriver! (located in ui.data_ui > ChromeDriverPaths)
+    chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_J
+    # chrome_driver_path = ChromeDriverPaths.CHROME_DRIVER_PATH_V
+    service = Service(chrome_driver_path)
+    browser = webdriver.Chrome(service=service)
+    browser.maximize_window()
+    yield browser
+    browser.quit()
+
 
 @pytest.fixture()
 def browser():
@@ -41,6 +42,7 @@ def browser():
     browser.maximize_window()
     yield browser
     browser.quit()
+
 
 @pytest.fixture()
 def login(browser):

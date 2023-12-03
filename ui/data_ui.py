@@ -9,7 +9,7 @@ load_dotenv()
 fake = Faker()
 
 class ChromeDriverPaths:
-    CHROME_DRIVER_PATH_J = '/Users/uliabubnova/PycharmProjects/TeamBook_ui_and_api/TeamBook_ui_and_api_orig_jul/chromedriver'
+    CHROME_DRIVER_PATH_J = '/Users/uliabubnova/PycharmProjects/sele_team_tesr/chromedriver'
     CHROME_DRIVER_PATH_V = '/usr/local/bin/chromedriver'
 
 
@@ -38,9 +38,14 @@ class UsersPageData:
     USERS_PAGE_URL = 'https://web.teambooktest.com/users'
     FIRST_NAME = fake.first_name()
     LAST_NAME = fake.last_name()
+    EMAIL = fake.email()
+    PHONE_NUMBER = fake.phone_number()
 
 
 
 
 class PlannerPageData:
     PLANNER_PAGE_URL = 'https://web.teambooktest.com/planners'
+
+class ActualsPageData:
+    ACTUALS_PAGE_URL = 'https://web.teambooktest.com/actuals'
